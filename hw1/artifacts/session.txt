@@ -1,0 +1,101 @@
+alex@alex-Legion-5-15ACH6H:~/Desktop/Python/hw1/hw1$ python3 nl.py nl.py
+     1  import sys
+     2
+     3  def number_lines(input_file):
+     4      line_number = 1
+     5      for line in input_file:
+     6          print(f"{line_number:6}\t{line}", end="", file=sys.stdout)
+     7          line_number += 1
+     8
+     9  def main():
+    10      if len(sys.argv) > 1:
+    11          try:
+    12              with open(sys.argv[1], 'r', encoding='utf-8') as f:
+    13                  number_lines(f)
+    14          except FileNotFoundError:
+    15              print(f"nl: {sys.argv[1]}: No such file or directory", file=sys.stderr)
+    16              sys.exit(1)
+    17          except IOError as e:
+    18              print(f"nl: {sys.argv[1]}: {e}", file=sys.stderr)
+    19              sys.exit(1)
+    20      else:
+    21          number_lines(sys.stdin)
+    22
+    23
+    24  if __name__ == '__main__':
+alex@alex-Legion-5-15ACH6H:~/Desktop/Python/hw1/hw1$ python3 nl.py
+sjfdhjdhfkshjf
+     1  sjfdhjdhfkshjf
+sjdhfjksd
+     2  sjdhfjksd
+skjdhfkj
+     3  skjdhfkj
+sjkdhfkj
+     4  sjkdhfkj
+alex@alex-Legion-5-15ACH6H:~/Desktop/Python/hw1/hw1$ python3 tail.py nl.py tail.py
+==> nl.py <==
+            sys.exit(1)
+        except IOError as e:
+            print(f"nl: {sys.argv[1]}: {e}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        number_lines(sys.stdin)
+
+
+if __name__ == '__main__':
+    main()
+==> tail.py <==
+            except FileNotFoundError:
+                print(f"tail: {path}: No such file or directory", file=sys.stderr)
+            except IOError as e:
+                print(f"tail: {path}: {e}", file=sys.stderr)
+    else:
+        sys.stdout.writelines(tail_stream(sys.stdin, 17))
+
+
+if __name__ == '__main__':
+    main()alex@alex-Legion-5-15ACH6H:~/Desktop/Python/hw1/hw1$ python3 tail.py
+1
+2
+3
+4
+5
+6
+7
+8
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+3
+4
+5
+6
+7
+8
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+alex@alex-Legion-5-15ACH6H:~/Desktop/Python/hw1/hw1$ python3 wc.py nl.py tail.py
+      24      58     668 nl.py
+      42      94     990 tail.py
+      66     152    1658 total
+alex@alex-Legion-5-15ACH6H:~/Desktop/Python/hw1/hw1$ python3 wc.py
+ksjhfgjh
+kjfhgjh
+jshgjhkfs
+sjhgjkfhg
+       4       4      37
